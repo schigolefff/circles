@@ -28,7 +28,7 @@ class Circles(QMainWindow):
             qp.end()
 
     def draw(self, qp):
-        brush = QBrush(QColor(f'#%6x' % random.randrange(0, 0xFFFFFF)))
+        brush = QBrush(QColor('yellow'))
         r = random.randrange(1, (SCREEN_SIZE[0] - 200) // 2)
         x = random.randrange(50, SCREEN_SIZE[0] - 50)
         y = random.randrange(50, SCREEN_SIZE[1] - 50)
