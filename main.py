@@ -5,14 +5,15 @@ from PyQt5 import uic
 from PyQt5.QtCore import QPoint
 from PyQt5.QtGui import QPainter, QBrush, QColor, QPolygon
 from PyQt5.QtWidgets import QMainWindow, QApplication
+from UI import Ui_MainWindow
 
 SCREEN_SIZE = [800, 600]
 
 
-class Circles(QMainWindow):
+class Circles(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(Circles, self).__init__()
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
         self.do_paint = False
         self.create_circle.clicked.connect(self.do_paint_True)
 
@@ -28,7 +29,7 @@ class Circles(QMainWindow):
             qp.end()
 
     def draw(self, qp):
-        brush = QBrush(QColor('yellow'))
+        brush = QBrush(QColor(f'#%6x' % random.randrange(0, 0xFFFFFF)))
         r = random.randrange(1, (SCREEN_SIZE[0] - 200) // 2)
         x = random.randrange(50, SCREEN_SIZE[0] - 50)
         y = random.randrange(50, SCREEN_SIZE[1] - 50)
